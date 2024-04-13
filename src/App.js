@@ -1,8 +1,17 @@
 import React from 'react'
 import {AdvancedImage} from '@cloudinary/react';
-import {Cloudinary} from "@cloudinary/url-gen";
+import {Cloudinary, transformationStringFromObject } from "@cloudinary/url-gen";
 import {fill} from "@cloudinary/url-gen/actions/resize";
+import {source} from "@cloudinary/url-gen/actions/overlay";
+import {byAngle} from "@cloudinary/url-gen/actions/rotate"
+import {sepia} from "@cloudinary/url-gen/actions/effect";
+import {byRadius} from "@cloudinary/url-gen/actions/roundCorners";
 
+// Import required values.
+import {text} from "@cloudinary/url-gen/qualifiers/source";
+import {Position} from "@cloudinary/url-gen/qualifiers/position";
+import {TextStyle} from "@cloudinary/url-gen/qualifiers/textStyle";
+import {compass} from "@cloudinary/url-gen/qualifiers/gravity";
 
 
 
@@ -24,11 +33,31 @@ const App = () => {
 
   // Render the image in a React component.
   
+  
   // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
-  const myImage = cld.image('docs/models'); 
+  const myImage = cld.image('docs/foliage_vzshjx'); 
 
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  myImage.resize(fill().width(250).height(250));
+  //myImage.resize(fill().width(250).height(250));
+ 
+
+
+// Transform the image.
+myImage
+  .resize(fill(850, 850))
+  .roundCorners(byRadius(20))
+  .effect(sepia())
+  .overlay(   
+    source(
+      text('This is my picture', new TextStyle('arial',18))
+      .textColor('white')      
+    )
+    .position(new Position().gravity(compass('north')).offsetY(20)))
+  .rotate(byAngle(20))
+  .format('png');
+  //myImage.setVersion(1610625835);
+  // Return the delivery URL
+  const myUrl = myImage.toURL();
 
   // Render the image in a React component.
   return (
