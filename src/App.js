@@ -1,6 +1,10 @@
 import React from 'react'
 import {AdvancedImage} from '@cloudinary/react';
 import {Cloudinary} from "@cloudinary/url-gen";
+import {fill} from "@cloudinary/url-gen/actions/resize";
+
+
+
 
 
 
@@ -14,16 +18,27 @@ const App = () => {
   });
 
   // cld.image returns a CloudinaryImage with the configuration set.
-  const myImage = cld.image('sample');
+  //const myImage = cld.image('sample');
 
   // The URL of the image is: https://res.cloudinary.com/demo/image/upload/sample
 
   // Render the image in a React component.
   
+  // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
+  const myImage = cld.image('docs/models'); 
+
+  // Resize to 250 x 250 pixels using the 'fill' crop mode.
+  myImage.resize(fill().width(250).height(250));
+
+  // Render the image in a React component.
   return (
+    
+  
     <div>
-      <AdvancedImage cldImg={myImage} />
-    </div>
+    <AdvancedImage cldImg={myImage} />
+  </div>
+    
+    
   )
 };
 
