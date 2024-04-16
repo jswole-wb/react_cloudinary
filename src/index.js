@@ -4,12 +4,35 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ReSize from './components/ReSize';
+import WaterMark from './components/WaterMark';
+
+
+
+const router = createBrowserRouter([
+  {
+  path:'/',
+  element: <App />,
+  errorElement:<div>404 Not Found </div>,
+},
+{
+  path:'/Resize',
+  element: <ReSize />,
+},
+{
+  path:'/WaterMark',
+  element: <WaterMark />,
+},
+
+]);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
    
-    <App />
+   <RouterProvider router={router} />
   </React.StrictMode>
 );
 

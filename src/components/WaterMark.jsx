@@ -1,5 +1,6 @@
 import React from 'react'
 import {Cloudinary} from "@cloudinary/url-gen";
+import {AdvancedImage} from '@cloudinary/react';
 
 // Import required actions.
 import {fill} from "@cloudinary/url-gen/actions/resize";
@@ -18,16 +19,16 @@ import {compass} from "@cloudinary/url-gen/qualifiers/gravity";
 // Create and configure your Cloudinary instance.
 const cld = new Cloudinary({
   cloud: {
-    cloudName: 'demo'
+    cloudName: 'dqf3gf0pr'
   }
 }); 
 
 // Use the image with public ID, 'sample'.
-const myImage = cld.image('sample');
+const myImage = cld.image('docs/lacnpf55hnrkdbuvq5fc');
 
 // Transform the image.
 myImage
-  .resize(fill(150, 150))
+  .resize(fill(850, 850))
   .roundCorners(byRadius(20))
   .effect(sepia())
   .overlay(   
@@ -41,15 +42,18 @@ myImage
 
   // Return the delivery URL
   const myUrl = myImage.toURL();
-export const WaterMark = () => {
+
+const WaterMark = () => {
   return (
     <>
      <div>WaterMark</div>
      <div>
-      <AdvancedImage cldImg={myImage} />
+         <div>
+    <AdvancedImage cldImg={myImage} />
+  </div>
     </div>
     </>
    
   )
 }
-
+export default WaterMark
