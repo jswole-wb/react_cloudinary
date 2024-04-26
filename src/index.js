@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReSize from './components/ReSize';
 import WaterMark from './components/WaterMark';
+import WaterMark_PDF from './components/WaterMark_PDF';
 
 
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
 {
   path:'/WaterMark',
   element: <WaterMark />,
+},
+{
+  path:'/WaterMark_PDF',
+  element: <WaterMark_PDF />,
 },
 
 ]);

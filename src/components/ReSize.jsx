@@ -47,7 +47,7 @@ myImage
 .effect(sepia())
 .overlay(   
   source(
-    text('This is my picture', new TextStyle('arial',18))
+    text('This is my picture resized', new TextStyle('arial',18))
     .textColor('white')      
   )
   .position(new Position().gravity(compass('north')).offsetY(20)))

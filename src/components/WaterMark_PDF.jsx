@@ -14,7 +14,7 @@ import {text} from "@cloudinary/url-gen/qualifiers/source";
 import {Position} from "@cloudinary/url-gen/qualifiers/position";
 import {TextStyle} from "@cloudinary/url-gen/qualifiers/textStyle";
 import {compass} from "@cloudinary/url-gen/qualifiers/gravity";
-
+import PDFViewer from './PDFViewer';
 
 // Create and configure your Cloudinary instance.
 const cld = new Cloudinary({
@@ -22,14 +22,10 @@ const cld = new Cloudinary({
     cloudName: 'dqf3gf0pr'
   }
 }); 
-//cloudinary.image("kitten_fighting.gif", {effect: "brightness:200", flags: ["relative", "tiled"], overlay: "cloudinary_icon", opacity: 50, width: "0.3", crop: "scale"})
-
-
 
 // Use the image with public ID, 'sample'.
-const myImage = cld.image('docs/lacnpf55hnrkdbuvq5fc');
-var thisemail = "email@example.com"
-
+const myImage = cld.image('docs/Dynamic_document_types_or_live_configuration_of_schemas_and_document_types_in_Nuxeo___by_Mariana_Cedica___Nuxeo_Open_Kitchen___Medium_jwtein');
+const pdfUrl = 'docs/Dynamic_document_types_or_live_configuration_of_schemas_and_document_types_in_Nuxeo___by_Mariana_Cedica___Nuxeo_Open_Kitchen___Medium_jwtein';
 // Transform the image.
 myImage
   .resize(fill(850, 850))
@@ -37,8 +33,8 @@ myImage
   .effect(sepia())
   .overlay(   
     source(
-      text('This is my picture ' + `${thisemail}`, new TextStyle('arial',18))
-      .textColor('white')      
+      text('This is my picture  ', new TextStyle('arial',18))
+      .textColor('red')      
     )
     .position(new Position().gravity(compass('north')).offsetY(20)))
   .rotate(byAngle(20))
@@ -50,10 +46,11 @@ myImage
 const WaterMark = () => {
   return (
     <>
-     <div>WaterMark</div>
+     <div>WaterMark PDF</div>
      <div>
          <div>
     <AdvancedImage cldImg={myImage} />
+    <PDFViewer pdfUrl={pdfUrl} />
   </div>
     </div>
     </>

@@ -16,6 +16,10 @@ const Home = () => {
               {/* Endpoint to route to Contact Us component */}
               <Link to="/WaterMark">WaterMark</Link>
           </li>
+          <li>
+              {/* Endpoint to route to Contact Us component */}
+              <Link to="/WaterMark_PDF">WaterMark PDF</Link>
+          </li>
       </ul></>
   )
 }
